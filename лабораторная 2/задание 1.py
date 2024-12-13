@@ -1,3 +1,6 @@
+import doctest
+
+
 class Student:
     def __init__(self, name: str, age: int, grades: list[int]) -> None:
         """
@@ -115,7 +118,7 @@ class Book:
         self.author = author
         self.year = year
 
-    def is_old(self) -> bool:
+    def is_old(self, year: int) -> bool:
         """
         Проверяет, является ли книга старой (более 50 лет).
 
@@ -123,10 +126,13 @@ class Book:
 
         :doctest:
         >>> book = Book("1984", "Джордж Оруэлл", 1949)
-        >>> book.is_old()
+        >>> book.is_old(2077)
         True
         """
-        return 2024 - self.year > 50
+        if year < 0:
+            raise ValueError("Где-то косяк")
+        else:
+            return 2024 - self.year > 50
 
     def brief_info(self) -> str:
         """
@@ -137,6 +143,10 @@ class Book:
         :doctest:
         >>> book = Book("Война и мир", "Лев Толстой", 1869)
         >>> book.brief_info()
-        'Книга "Война и мир" написана Львом Толстым и издана в 1869 году.'
+        'Книга "Война и мир" написана Лев Толстой и издана в 1869 году.'
         """
         return f'Книга "{self.title}" написана {self.author} и издана в {self.year} году.'
+
+
+if __name__ == "__main__":
+    doctest.testmod()
