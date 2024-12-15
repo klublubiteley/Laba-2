@@ -130,7 +130,7 @@ class Book:
         True
         """
         if year < 0:
-            raise ValueError("Где-то косяк")
+            raise ValueError("Ошибка")
         else:
             return 2024 - self.year > 50
 
@@ -143,9 +143,9 @@ class Book:
         :doctest:
         >>> book = Book("Война и мир", "Лев Толстой", 1869)
         >>> book.brief_info()
-        'Книга "Война и мир" написана Лев Толстой и издана в 1869 году.'
+        'Книга "Война и мир" была издана в 1869 году, её автор - Лев Толстой.'
         """
-        return f'Книга "{self.title}" написана {self.author} и издана в {self.year} году.'
+        return f'Книга "{self.title}" была издана в {self.year} году, её автор - {self.author}.'
 
 
 if __name__ == "__main__":
